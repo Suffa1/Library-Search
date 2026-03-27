@@ -6,13 +6,14 @@
     gap: 8px;
 }
     
-.div12 {
+.div2 {
     width: 300px;
     border: 15px solid green;
     padding: 50px;
     margin: 20px;
+    grid-column: span 3 / span 3;
     grid-row: span 3 / span 3;
-    grid-column-start: 3;
+    grid-column-start: 2;
     grid-row-start: 2;
 }
         
