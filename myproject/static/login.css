@@ -1,19 +1,72 @@
+:root {
+    /* Colors pulled from your Momotalk theme file */
+    --bg-color: #1A1A1E;
+    --container-bg: #4C5B6F; /* --messagebubble */
+    --accent-color: #E56072;  /* --momotalkbanner */
+    --button-color: #4A8AC8;  /* --senseimessagebubble */
+    --text-color: #FFFFFF;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+}
 
 .parent {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(5, 1fr);
-    gap: 8px;
+    height: 100vh; /* Full screen height */
+    place-items: center; /* Perfectly centers the form */
 }
-    
+
 .div2 {
-    width: 300px;
-    border: 15px solid green;
-    padding: 50px;
-    margin: 20px;
-    grid-column: span 3 / span 3;
-    grid-row: span 3 / span 3;
-    grid-column-start: 2;
-    grid-row-start: 2;
+    background-color: var(--container-bg);
+    width: 350px;
+    padding: 40px;
+    border-radius: 15px; /* Smoother corners */
+    border-left: 8px solid var(--accent-color); /* MomoTalk style accent strip */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
 }
-        
+
+h1 {
+    margin-top: 0;
+    color: var(--accent-color);
+    font-size: 24px;
+    text-align: center;
+}
+
+p {
+    margin-bottom: 5px;
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/* Styling the inputs to look modern */
+.theme-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    box-sizing: border-box; /* Prevents input from sticking out */
+}
+
+.theme-button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--button-color);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.theme-button:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-2px);
+}      

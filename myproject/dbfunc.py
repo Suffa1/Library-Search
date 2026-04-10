@@ -1,5 +1,7 @@
 import mysql.connector
 from mysql.connector import errorcode
+import json
+import os
  
 # MYSQL CONFIG VARIABLES
 hostname    = "localhost"
@@ -22,4 +24,20 @@ def getConnection():
             print(err)                        
     else:  
         return conn   
+    
+
+
+DATA_FILE = 'users.json'
+
+def load_users():
+    if not os.path.exists(DATA_FILE):
+        return {}
+    with open(DATA_FILE, 'r') as f:
+        return json.load(f)
+
+def save_user(username, password):
+    users = load_users()
+    users[username] = password
+    with open(DATA_FILE, 'w') as f:
+        json.dump(users, f)
                 
