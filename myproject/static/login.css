@@ -1,57 +1,55 @@
 :root {
-    /* Colors pulled from your Momotalk theme file */
+    /* Theme colors from Momotalk.theme.css */
     --bg-color: #1A1A1E;
-    --container-bg: #4C5B6F; /* --messagebubble */
-    --accent-color: #E56072;  /* --momotalkbanner */
-    --button-color: #4A8AC8;  /* --senseimessagebubble */
+    --container-bg: #4C5B6F; 
+    --accent-color: #E56072;  
+    --button-color: #4A8AC8;  
     --text-color: #FFFFFF;
 }
 
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
-}
-
-.parent {
-    display: grid;
-    height: 100vh; /* Full screen height */
-    place-items: center; /* Perfectly centers the form */
+    
+    /* Centering Logic */
+    display: flex;
+    justify-content: center; /* Horizontal center */
+    align-items: center;     /* Vertical center */
+    min-height: 100vh;       /* Ensure body takes full viewport height */
+    padding: 20px;           /* Padding prevents the box from touching edges on mobile */
 }
 
 .div2 {
     background-color: var(--container-bg);
-    width: 350px;
-    padding: 40px;
-    border-radius: 15px; /* Smoother corners */
-    border-left: 8px solid var(--accent-color); /* MomoTalk style accent strip */
-    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    padding: 2.5rem; 
+    border-radius: 15px;
+    border-left: 8px solid var(--accent-color);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+
+    /* Responsiveness Logic */
+    width: 100%;            /* Grow to fill the column */
+    max-width: 450px;       /* Keeps it from getting too huge on desktop */
 }
 
-h1 {
-    margin-top: 0;
-    color: var(--accent-color);
-    font-size: 24px;
-    text-align: center;
-}
-
-p {
-    margin-bottom: 5px;
-    font-size: 14px;
-    opacity: 0.9;
-}
-
-/* Styling the inputs to look modern */
+/* Ensure inputs don't overflow their container */
 .theme-input {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
+    padding: 12px;
+    margin-bottom: 1.5rem;
     border: none;
     border-radius: 5px;
     background: rgba(255, 255, 255, 0.1);
     color: white;
-    box-sizing: border-box; /* Prevents input from sticking out */
+    outline: none;
+    box-sizing: border-box; /* Crucial: includes padding in the width */
+}
+
+/* Other styles remain the same... */
+h1 {
+    color: var(--accent-color);
+    text-align: center;
+    margin-bottom: 2rem;
 }
 
 .theme-button {
@@ -63,10 +61,10 @@ p {
     color: white;
     font-weight: bold;
     cursor: pointer;
-    transition: 0.3s;
+    transition: transform 0.2s, background-color 0.2s;
 }
 
 .theme-button:hover {
     background-color: var(--accent-color);
-    transform: translateY(-2px);
-}      
+    transform: scale(1.02);
+}
