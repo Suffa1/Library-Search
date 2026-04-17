@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    {% block head %}
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+    <script src="{{ url_for('static', filename='myjavascript.js') }}"></script>
+
+    <title>{% block title %}
+
+           {% endblock %} - My Webpage
+
+    </title>
+
+    {% endblock %}
+
+</head>
+
+<body>
+
+    <div id="content" class = "important">
+
+        {% block content %}
+
+        {% endblock %}
+
+    </div>
+
+
+
+    <div id="footer">
+
+        {% block footer %}
+
+        <!-- &copy; Copyright 2026 by <a href="http://127.0.1/login">Company You</a>. -->   
+
+        {% endblock %}
+
+    </div>
+
+</body>
+
+</html>

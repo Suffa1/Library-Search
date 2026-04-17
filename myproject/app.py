@@ -1,33 +1,41 @@
-from flask import Flask, render_template, request, session, redirect, url_for, abort
-from dbfunc import load_users # Import your librarian
+import os
+from flask import Flask, render_template, request, abort, url_for, session, redirect
+import os # Make sure os is imported for getenv to work
 
 app = Flask(__name__)
-app.secret_key = 'momo_talk_secret'
+app.secret_key = 'any_random_string_here' # Required to encrypt the session cookie
+
+app.config['username'] = os.getenv('username')
+app.config['password'] = os.getenv('password')
+
 
 @app.route('/')
 def hello():
+    # Check if the user is actually logged in
     if not session.get('logged_in'):
-        return redirect(url_for('login_page'))
+        return redirect(url_for('index')) # Send them back to login page
+        
     return render_template('home.html')
 
 @app.route('/login')
-def login_page():
+def index():
+
     return render_template('login.html')
 
-@app.route('/login_action', methods=['POST'])
-def login_action():
+@app.route('/login', methods=['POST'])
+def result():
     username = request.form.get('username')
     password = request.form.get('password')
-    users = load_users()
-    
-    if username in users and users[username] == password:
+
+    if username == app.config['username'] and password == app.config['password']:
+        # 1. Store the login status in the session
         session['logged_in'] = True
         session['user'] = username
-        return redirect(url_for('hello'))
-    return abort(401)
-
-# This line is important to connect the signup file later
-import signup 
+        
+        # 2. Redirect to the 'hello' function (the / route)
+        return redirect(url_for('hello')) 
+    else:
+        return abort(401)
 
 if __name__ == '__main__':
-    app.run(debug=True, port=9000)
+    app.run(debug = True, port=9000)

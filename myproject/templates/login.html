@@ -1,17 +1,15 @@
-<html>
-<head>
-    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
-</head>
-<body>
+{% extends "base.html" %}
+{% block content %}
+
     <div class="parent">
         <div class="div2">
             <h1>Login</h1>
-            <form action="/login" method="post">
+            <form action="/login" method="post" name="MyForm" onsubmit="return formValidation()">
                 <p>Username</p>
-                <input type="text" name="username" class="theme-input" required/>
+                <input type="text" name="username" id="uid" class="theme-input" required/>
                 
                 <p>Password</p>
-                <input type="password" name="password" class="theme-input" required/>
+                <input type="password" name="password" id="pw" class="theme-input" required/>
                 
                 <div class="button-container">
                     <input type="submit" value="Login" class="theme-button"/>
@@ -19,5 +17,5 @@
             </form>
         </div>
     </div>
-</body>
-</html>
+
+{% endblock %}
